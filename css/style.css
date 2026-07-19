@@ -1,0 +1,678 @@
+/* Базові налаштування */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ШАПКА САЙТУ */
+.header {
+    width: 100%;
+    height: 80px;
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+.inner_header {
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+logo_container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    /* Розтягуємо контейнер на всі 80px шапки */
+}
+
+/* Налаштування самого зображення логотипу */
+.logo-img {
+    height: 58px;
+    /* Оптимальна висота (можете змінити на 40px або 48px, як вам більше подобається) */
+    width: auto;
+    /* Ширина підлаштовується автоматично під пропорції вашого файлу */
+    max-width: 300px;
+    /* Запобіжник, щоб дуже довге лого не залізло на меню навігації */
+    display: block;
+    /* Прибирає мікро-відступи знизу зображення */
+    object-fit: contain;
+    /* Гарантує, що логотип не деформується */
+    mix-blend-mode: multiply;
+}
+
+.logo_container h1 {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.logo_container span {
+    color: #ef6f6c;
+}
+
+.navigation {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.navigation a {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+}
+
+.navigation a:hover {
+    color: #ef6f6c;
+}
+
+/* БУРГЕР-МЕНЮ КНОПКА */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.burger-menu span {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* ВІДЕО-БАНЕР (HERO) */
+.video-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 500px;
+    overflow: hidden;
+    background-color: #000;
+    margin-top: 0;
+}
+
+.video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Тепер відео покажеться на 100% повністю */
+    z-index: 1;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    justify-content: center;
+
+    /* Змінюємо ці два рядки: */
+    align-items: flex-end;
+    /* Опускає весь контент до нижнього краю */
+    padding: 0 20px 80px 20px;
+    /* 80px — це безпечний відступ знизу (можна збільшити або зменшити) */
+
+    z-index: 2;
+    text-align: center;
+}
+
+.hero-text-container {
+    width: 100%;
+    max-width: 1200px;
+    color: #ffffff;
+    padding: 0 40px;
+}
+
+.hero-title {
+    font-size: 60px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 40px;
+    font-weight: 300;
+    margin-bottom: 35px;
+    color: #e0e0e0;
+}
+
+.hero-btn {
+    display: inline-block;
+    background-color: #ef6f6c;
+    color: #ffffff;
+    padding: 14px 35px;
+    font-size: 26px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 30px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.hero-btn:hover {
+    background-color: #d65c59;
+    transform: translateY(-3px);
+}
+
+/* ЗАГАЛЬНІ СЕКЦІЇ */
+.site-section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 50px;
+    position: relative;
+    color: #2c3e50;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #ef6f6c;
+    margin: 10px auto 0;
+}
+
+/* ШАБЛОН СЛАЙДЕРА (КАРУСЕЛІ) */
+.slider-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.slider-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 15px 5px;
+}
+
+.grid {
+    display: flex;
+    gap: 24px;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+/* КАРТКИ */
+.grid .card {
+    flex: 0 0 calc((100% - 48px) / 3);
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+
+.grid .card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.text {
+    padding: 25px;
+}
+
+.day-number {
+    display: inline-block;
+    background-color: #ef6f6c;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.text h3 {
+    font-size: 20px;
+    color: #2c3e50;
+    margin-bottom: 12px;
+}
+
+.text p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #7f8c8d;
+}
+
+/* КНОПКИ СЛАЙДЕРА */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ef6f6c;
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.slider-btn:hover {
+    background-color: #d65c59;
+}
+
+.slider-btn:active {
+    transform: translateY(-50%) scale(0.9);
+}
+
+.prev-btn {
+    left: -25px;
+}
+
+.next-btn {
+    right: -25px;
+}
+
+/* ПРО НАС */
+.about-section {
+    background-color: #f0f4f8;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-text h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.about-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* КОНТАКТИ ТА ФОРМА */
+.contacts-wrapper {
+    display: flex;
+    gap: 50px;
+    margin-top: 20px;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-info h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.contact-info p {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.contact-list {
+    list-style: none;
+}
+
+.contact-list li {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.contact-list strong {
+    color: #ef6f6c;
+}
+
+.contact-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #ef6f6c;
+}
+
+.submit-btn {
+    background-color: #ef6f6c;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #d65c59;
+}
+
+/* ФУТЕР */
+.footer {
+    background-color: #101010;
+    color: #666;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 14px;
+}
+
+/* АДАПТИВНІСТЬ ТА АНІМАЦІЯ БУРГЕРА */
+@media (max-width: 768px) {
+    .burger-menu {
+        display: flex !important;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10005;
+    }
+
+    /* Анімація перетворення бургера в хрестик */
+    .burger-menu.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .burger-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger-menu.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .navigation {
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: #101010;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 50px;
+        gap: 30px;
+        transition: right 0.4s ease;
+        z-index: 10000;
+    }
+
+    .navigation.active {
+        right: 0 !important;
+    }
+
+    .navigation a {
+        font-size: 22px;
+        display: block;
+        padding: 10px;
+    }
+
+    .video-hero {
+        height: 60vh;
+    }
+
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    .grid .card {
+        flex: 0 0 100%;
+    }
+
+    .slider-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+
+    .prev-btn {
+        left: -10px;
+    }
+
+    .next-btn {
+        right: -10px;
+    }
+
+    .contacts-wrapper {
+        flex-direction: column;
+        gap: 40px;
+    }
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* Стилі для модального вікна */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Затемнення фону */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100000;
+    /* Понад усім на сайті */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Коли вікно активне */
+.modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* КЛАСИ МОДАЛЬНОГО ВІКНА З БІЛЬШИМ ТЕКСТОМ */
+/* КЛАСИ МОДАЛЬНОГО ВІКНА З БІЛЬШИМ ТЕКСТОМ */
+/* КЛАСИ МОДАЛЬНОГО ВІКНА — ЗБІЛЬШЕНО У 2 РАЗИ */
+.modal-content {
+    background-color: #ffffff;
+    padding: 60px;
+    /* Набагато більше простору всередині */
+    border-radius: 32px;
+    max-width: 1100px;
+    /* ЗБІЛЬШЕНО: тепер вікно широке і текст не тулиться */
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.3);
+}
+
+/* Величезна кнопка-хрестик */
+.modal-close {
+    position: absolute;
+    top: 30px;
+    right: 35px;
+    font-size: 64px;
+    /* Збільшено у два рази */
+    background: none;
+    border: none;
+    color: #bbb;
+    cursor: pointer;
+    line-height: 0.7;
+}
+
+.modal-close:hover {
+    color: #ef6f6c;
+}
+
+/* Величезна плашка дня */
+.modal-day {
+    display: inline-block;
+    background-color: #ef6f6c;
+    color: white;
+    padding: 12px 30px;
+    /* Більш масивна плашка */
+    border-radius: 30px;
+    font-size: 24px;
+    /* Збільшено вдвічі (було 18px) */
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Гігантський головний заголовок */
+#modalTitle {
+    color: #2c3e50;
+    margin-bottom: 60px;
+    font-size: 56px;
+    /* Збільшено (було 40px) — тепер це потужний головний акцент */
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+/* Товста і простора лінія часу */
+.program-timeline {
+    list-style: none;
+    padding: 0;
+    /* Збільшили відступ від лінії */
+    margin: 20px 0 0 20px;
+    position: relative;
+    /* Товстіша лінія (6px замість 4px) */
+}
+
+/* Елементи списку (Текст програми) */
+.program-timeline li {
+    position: relative;
+    padding-left: 30px;
+    /* Фіксована відстань від лінії до початку тексту */
+    margin-bottom: 25px;
+    /* Відступ між пунктами */
+    font-size: 16px;
+    line-height: 1.5;
+    color: #4a5568;
+    text-align: left;
+}
+
+/* Величезні 3D-крапки на лінії часу */
+.program-timeline::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    /* Починаємо лінію на рівні першої крапки */
+    bottom: 10px;
+    /* Закінчуємо на рівні останньої */
+    left: 6px;
+    /* Центруємо лінію точно під крапками */
+    width: 2px;
+    background-color: #ef6f6c;
+    /* Ваш рожевий колір лінії */
+    z-index: 1;
+}
+
+.program-timeline li::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    /* Ідеально вирівнює крапку по центру першого рядка тексту */
+    width: 14px;
+    /* Розмір крапки */
+    height: 14px;
+    background-color: #ef6f6c;
+    /* Колір кружечка */
+    border: 3px solid #ffffff;
+    /* Біла обводка, щоб вона перекривала лінію */
+    border-radius: 50%;
+    /* Робимо елемент круглим */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    /* Легкий 3D ефект */
+    z-index: 2;
+    /* Ставимо поверх лінії */
+}
+
+
+/* Гігантські цифри часу */
+.program-timeline strong {
+    color: #ef6f6c;
+    display: inline-block;
+    width: 140px;
+    /* Збільшено ширину під великі цифри, щоб текст не злітав вниз */
+    font-size: 36px;
+    /* Збільшено (було 24px) */
+    font-weight: 900;
+    margin-right: 15px;
+}
